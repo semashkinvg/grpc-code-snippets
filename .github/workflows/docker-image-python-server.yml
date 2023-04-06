@@ -36,4 +36,13 @@ jobs:
         dockerfile: src/python/Dockerfile
         failure-threshold: error
     - name: Build the Docker image
-      run: docker build . --file src/python/Dockerfile --tag grpc-python-server:$(date +%s)
+      run: docker build . --file src/python/Dockerfile --tag grpc-python-server:${{ github.sha }}
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: 'grpc-python-server:${{ github.sha }}'
+        format: 'table'
+        exit-code: '1'
+        ignore-unfixed: true
+        vuln-type: 'os,library'
+        severity: 'CRITICAL,HIGH'
