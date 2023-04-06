@@ -1,0 +1,12 @@
+syntax="proto3";
+service DataTransferService {
+    rpc Transfer(DataTransferInput) returns (DataTransferResult) {}
+ }
+
+ message DataTransferInput {
+    int32 BatchSize = 1;
+ }
+
+ message DataTransferResult {
+    int32 ProcessCount = 1;
+ }
