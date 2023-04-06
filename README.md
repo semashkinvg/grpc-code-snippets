@@ -1,1 +1,1 @@
-# my-python-gprc
+[![Build Docker Image of Python Server](https://github.com/semashkinvg/grpc-code-snippets/actions/workflows/docker-image-python-server.yml/badge.svg?branch=main)](https://github.com/semashkinvg/grpc-code-snippets/actions/workflows/docker-image-python-server.yml)
