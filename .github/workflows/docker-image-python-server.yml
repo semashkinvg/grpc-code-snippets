@@ -19,5 +19,6 @@ jobs:
       uses: hadolint/hadolint-action@v3.1.0
       with:
         dockerfile: src/python/Dockerfile
+        failure-threshold: error
     - name: Build the Docker image
       run: docker build . --file src/python/Dockerfile --tag grpc-python-server:$(date +%s)
