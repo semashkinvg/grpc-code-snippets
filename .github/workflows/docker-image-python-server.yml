@@ -14,8 +14,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: hadolint/hadolint-action@v3.1.0
     - name: Lint Dockerfile
+    - uses: hadolint/hadolint-action@v3.1.0
       with:
         dockerfile: src/python/Dockerfile
     - name: Build the Docker image
