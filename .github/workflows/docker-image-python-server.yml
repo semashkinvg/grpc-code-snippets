@@ -1,0 +1,22 @@
+name: Build Docker Image of Python Server
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: hadolint/hadolint-action@v3.1.0
+    - name: Lint Dockerfile
+      with:
+        dockerfile: src/python/Dockerfile
+    - name: Build the Docker image
+      run: docker build . --file src/python/Dockerfile --tag grpc-python-server:$(date +%s)
