@@ -130,3 +130,5 @@ dmypy.json
 *_pb2_*
 *_pb2.py*
 .vscode
+.local.notes
+*-secret.yaml
