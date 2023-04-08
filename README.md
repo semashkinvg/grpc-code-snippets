@@ -13,3 +13,7 @@ chmod +x ./protos/generate.sh
 ./protos/generate.sh ./src/python/server
 ```
 run apps in debug
+
+## Minikube
+
+### Issue: Couldn't pull image from ghcr.io
