@@ -15,5 +15,7 @@ chmod +x ./protos/generate.sh
 run apps in debug
 
 ## Minikube
+A long with have codes to create gRPC services on many languages I build them and deploy to K8S (minikube) in my case
 
 ### Issue: Couldn't pull image from ghcr.io
+apparently `minikube start` did work very well to me as I spent dissent amount of time authenticating to `ghcr.io` using guides like [this](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/). All of a sudden, seems like the issue was in the network, not in the auth. [simple trick](https://github.com/kubernetes/minikube/issues/8902#issuecomment-697834355) helped me a lot.
