@@ -6,18 +6,17 @@ metadata:
   name: grpc-python-server-deployment
   namespace: grpc-python
 spec:
-  allocateLoadBalancerNodePorts: true
   externalTrafficPolicy: Cluster
   internalTrafficPolicy: Cluster
   ipFamilies:
   - IPv4
   ipFamilyPolicy: SingleStack
   ports:
-  - nodePort: 31769
-    port: 50051
-    protocol: TCP
+  - port: 50051
+    nodePort: 31769
     targetPort: 50051
+    protocol: TCP
   selector:
     app: grpc-python-server
   sessionAffinity: None
-  type: LoadBalancer
+  type: NodePort
