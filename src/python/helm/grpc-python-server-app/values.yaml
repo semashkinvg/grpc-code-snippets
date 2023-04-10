@@ -1,0 +1,12 @@
+# Default values for helm.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+namespace: grpc-python
+app: grpc-python-server
+docker:
+  config:
+    secret_name: ghcr-io-auth
+    ghcr_content: some-base64

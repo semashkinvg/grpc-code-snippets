@@ -2,9 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: grpc-python-server
+    app: {{ .Values.app }}
   name: grpc-python-server-deployment
-  namespace: grpc-python
+  namespace: {{ .Values.namespace }}
 spec:
   externalTrafficPolicy: Cluster
   internalTrafficPolicy: Cluster
@@ -17,6 +17,6 @@ spec:
     targetPort: 50051
     protocol: TCP
   selector:
-    app: grpc-python-server
+    app: {{ .Values.app }}
   sessionAffinity: None
   type: NodePort

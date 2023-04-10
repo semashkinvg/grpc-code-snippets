@@ -1,0 +1,1 @@
+helm install --set docker.config.ghcr_content=$SECRET -f ./src/python/helm/grpc-python-server-app/values.yaml ./src/python/helm/grpc-python-server-app --generate-name
