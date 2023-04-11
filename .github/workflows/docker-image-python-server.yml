@@ -7,14 +7,11 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.10"]
-
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -46,13 +43,14 @@ jobs:
         ignore-unfixed: true
         vuln-type: 'os,library'
         severity: 'CRITICAL' 
-    if: github.ref == 'refs/heads/main' && github.action == 'push'
     - name: 'Login to GitHub Container Registry'
+      if: github.ref == 'refs/heads/main' && github.action == 'push'
       uses: docker/login-action@v1
       with:
         registry: ghcr.io
         username: ${{github.actor}}
         password: ${{secrets.GHCR_TOKEN}}
     - name: 'Push Inventory Image'
+      if: github.ref == 'refs/heads/main' && github.action == 'push'
       run: |
         docker push ghcr.io/${{github.actor}}/grpc-python-server:${{ github.sha }}
