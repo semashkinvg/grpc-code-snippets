@@ -24,7 +24,7 @@ spec:
         app: {{ .Values.app }}
     spec:
       containers:
-      - image: ghcr.io/semashkinvg/python-server-data-transfer:latest
+      - image: {{ .Values.image }}
         imagePullPolicy: Always
         name: {{ .Values.app }}
         ports:

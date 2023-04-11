@@ -10,3 +10,5 @@ docker:
   config:
     secret_name: ghcr-io-auth
     ghcr_content: some-base64
+
+image: ghcr.io/semashkinvg/python-server-data-transfer:latest
