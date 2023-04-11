@@ -2,7 +2,7 @@ name: Build Docker Image of Python Server
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "features/*" ]
   pull_request:
     branches: [ "main" ]
 
@@ -36,13 +36,22 @@ jobs:
         dockerfile: src/python/Dockerfile
         failure-threshold: error
     - name: Build the Docker image
-      run: docker build . --file src/python/Dockerfile --tag grpc-python-server:${{ github.sha }}
+      run: docker build . --file src/python/Dockerfile --tag ghcr.io/${{github.actor}}/grpc-python-server-${GITHUB_REF##*/}:${{ github.sha }}
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
       with:
-        image-ref: 'grpc-python-server:${{ github.sha }}'
+        image-ref: 'ghcr.io/${{github.actor}}/grpc-python-server-${GITHUB_REF##*/}:${{ github.sha }}'
         format: 'table'
         exit-code: '1'
         ignore-unfixed: true
         vuln-type: 'os,library'
         severity: 'CRITICAL'
+    - name: 'Login to GitHub Container Registry'
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{github.actor}}
+        password: ${{secrets.GHCR_TOKEN}}
+    - name: 'Push Inventory Image'
+      run: |
+        docker push ghcr.io/${{github.actor}}/grpc-python-server-${GITHUB_REF##*/}:${{ github.sha }}
