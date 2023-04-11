@@ -1,4 +1,5 @@
 FROM python:3.10-buster as build
+LABEL org.opencontainers.image.source="https://github.com/semashkinvg/grpc-python-server"
 
 EXPOSE 50051
 
