@@ -3,3 +3,11 @@ kind: Kustomization
 resources:
 - namespaces/python-grpc/python-grpc-namespace.yaml
 - namespaces/shared/shared-namespace.yaml
+
+helmCharts:
+- name: vault
+  repo: https://helm.releases.hashicorp.com
+  version: 0.24.1
+  releaseName: vault
+  namespace: shared
+  valuesFile: default-vault-values.yaml
