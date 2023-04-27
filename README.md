@@ -22,13 +22,16 @@ apparently `minikube start` did work very well to me as I spent dissent amount o
 
 
 # Kustomize
+The current section describes how to apply and initialize demo `kustomization` implementation. Primary purpose of the implementation is learning.
 
-apply `kustomize` using commands
+## How to apply
+
+1. in `/src/kustomize/base/app/python/server` create file `.temp/.dockerconfigjson` with a dockerconfig secret in base64
+2. apply `kustomize` using commands
 ```bash
 cd src/kustomize
-kubectl kustomize dev/ --enable-helm | k apply -f -
+kubectl kustomize <profile>/ --enable-helm | k apply -f -
 ```
 
 ## Vault Initialization
 helpful [link](https://mycloudjourney.medium.com/vault-installation-to-minikube-via-helm-with-integrated-storage-15c9d1a907e6)
-
