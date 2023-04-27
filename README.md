@@ -40,4 +40,4 @@ helpful [link](https://mycloudjourney.medium.com/vault-installation-to-minikube-
 Tried to follow this [guide](https://kubernetes.github.io/ingress-nginx/user-guide/exposing-tcp-udp-services/). Couldn't manage to make it working.
 
 ## configMap generator
-couldn't manage to add value like this `- 9000=grpc-python/grpc-python-server-service:50051` via kustromize configMap generator.
+couldn't manage to add value like this `- 9000=grpc-python/grpc-python-server-service:50051` via kustomize configMap generator.
