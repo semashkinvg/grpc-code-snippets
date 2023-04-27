@@ -1,0 +1,9 @@
+server:
+  replicas: 1
+  service:
+    type: NodePort
+  affinity: ""
+  ha:
+    enabled: true
+    raft: 
+      enabled: true

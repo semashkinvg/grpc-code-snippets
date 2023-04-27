@@ -131,3 +131,6 @@ dmypy.json
 *_pb2.py*
 .vscode
 .local.notes
+.temp
+
+src/kustomize/**/charts

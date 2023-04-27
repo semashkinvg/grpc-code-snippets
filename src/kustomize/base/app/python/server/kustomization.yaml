@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- deployment.yaml
+- service.yaml
+
+secretGenerator:
+- files:
+  - .dockerconfigjson=.temp/.dockerconfigjson
+  name: regcred
+  type: kubernetes.io/dockerconfigjson
+
+replacements:
+- source:
+    fieldPath: metadata.name
+    kind: Secret
+    name: regcred
+    version: v1
+  targets:
+  - select:
+      name: grpc-python-server-deployment
+      kind: Deployment
+    fieldPaths:
+    - spec.template.spec.imagePullSecrets.[name=SECRET_NAME_PLACEHOLDER].name
+    options:
+      create: true
+
+labels:
+  - pairs:
+      semashkinvg.io/learning-applications-app: grpc-python-server
+    includeTemplates: true
+    includeSelectors: true
