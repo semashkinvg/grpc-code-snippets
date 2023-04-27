@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grpc-python-server-service
+spec:
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 50051
+    nodePort: 31769
+    targetPort: 50051
+    protocol: TCP
+  # added with kustomize
+  # selector:
+  #   app: grpc-python-server
+  sessionAffinity: None
+  type: NodePort
