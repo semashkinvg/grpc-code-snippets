@@ -7,5 +7,5 @@ resources:
 
 labels:
   - pairs:
-      semashking/learning/applications/language: python
+      semashkinvg.io/learning-applications-language: python
     includeTemplates: true

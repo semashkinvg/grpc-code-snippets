@@ -5,6 +5,6 @@ resources:
 
 labels:
   - pairs:
-      semashking/learning/applications/technology: grpc
+      semashkinvg.io/learning-applications-technology: grpc
       owner: semashkinvg
     includeTemplates: true

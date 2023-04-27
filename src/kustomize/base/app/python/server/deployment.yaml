@@ -4,12 +4,14 @@ metadata:
   name: grpc-python-server-deployment
 spec:
   selector:
-    matchLabels:
-      app: grpc-python-server
+    # added with kustomize
+    # matchLabels:
+    #   app: grpc-python-server
   template:
-    metadata:
-      labels:
-        app: grpc-python-server
+    metadata: {}
+      # added with kustomize
+      # labels:
+      #   app: grpc-python-server
     spec:
       containers:
       - image: ghcr.io/semashkinvg/python-server-data-transfer:latest
