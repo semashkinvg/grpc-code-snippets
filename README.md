@@ -37,7 +37,9 @@ kubectl kustomize <profile>/ --enable-helm | k apply -f -
 helpful [link](https://mycloudjourney.medium.com/vault-installation-to-minikube-via-helm-with-integrated-storage-15c9d1a907e6)
 
 ## Exposing TCP service via NGINX ingress controller
-Tried to follow this [guide](https://kubernetes.github.io/ingress-nginx/user-guide/exposing-tcp-udp-services/). Couldn't manage to make it working.
+Following this guide seem to be not enough [guide](https://kubernetes.github.io/ingress-nginx/user-guide/exposing-tcp-udp-services/) and I had to open the port in the deployment as well according to [minikube documentation](https://minikube.sigs.k8s.io/docs/tutorials/nginx_tcp_udp_ingress/#patch-the-ingress-nginx-controller)
+
 
 ## configMap generator
 couldn't manage to add value like this `- 9000=grpc-python/grpc-python-server-service:50051` via kustomize configMap generator.
+Workaround: export the config map to yaml and add required data there.
